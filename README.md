@@ -16,5 +16,8 @@ Personal project about history. The main objective is to learn tools and apply s
 - Create the jar package
   - ./mvnw package
   - to test it: java -jar target/JAR_name-JAR_version.jar
-- Create Dockerfile under docker folder
-- Create the Docker image with: docker build -t name . 
+- Create Dockerfile (as written, without . at start)
+  - Note: you can't create a folder, you have to put it at root level
+- Create the Docker image with: docker build -t image_name .
+  - This is the blueprint for creating a container
+- Create container with: docker run -d -p 8080:8080 image_name
