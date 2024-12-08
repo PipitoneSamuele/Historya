@@ -26,4 +26,10 @@ Personal project about history. The main objective is to learn tools and apply s
 
 ### Quickstart
 - ng new project_name
-- 
+- ng serve
+  - Not working ng serve plain, i had to add --ssl
+
+### Dockerize
+- Create Dockerfile (with the same notes as the microservice section)
+- Create the Docker image with: docker build -t image_name . (same as microservice)
+- Create container with: docker run -d -p 4200:4200 image_name
