@@ -21,3 +21,9 @@ Personal project about history. The main objective is to learn tools and apply s
 - Create the Docker image with: docker build -t image_name .
   - This is the blueprint for creating a container
 - Create container with: docker run -d -p 8080:8080 image_name
+
+## Client
+
+### Quickstart
+- ng new project_name
+- 
