@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: facts-deploy
+  labels:
+    app: facts
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: facts
+  template:
+    metadata:
+      labels:
+        app: facts
+    spec:
+      containers:
+        - name: facts
+          image: facts:0.0.1
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client-deploy
+  labels:
+    app: client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: client
+  template:
+    metadata:
+      labels:
+        app: client
+    spec:
+      containers:
+        - name: client
+          image: client:0.0.1
