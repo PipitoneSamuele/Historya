@@ -31,5 +31,26 @@ Personal project about history. The main objective is to learn tools and apply s
 
 ### Dockerize
 - Create Dockerfile (with the same notes as the microservice section)
-- Create the Docker image with: docker build -t image_name . (same as microservice)
+- Create the Docker image with: docker build -t image_name:tag . (same as microservice)
 - Create container with: docker run -d -p 4200:4200 image_name
+
+## Environment 
+Now the objective is to have communication between client and microservices.
+To do that I will use a Kubernetes cluster (Minikube).
+
+### First time build
+- minikube start
+  - Useful to watch the cluster: minikube dashboard
+- launch eval $(minikube docker-env) in every new bash
+- build the docker images you need
+- kubectl apply -f k8s.yaml (this is the file for the deployment, it will take
+the previously builded image)
+
+### Iterative developement
+- make sure you are pointing at docker-env with command minikube status
+- remove the image with
+  - kubectl delete -f k8s.yaml
+  - docker rmi image_name:tag
+- rebuild and re-deploy with
+  - docker build -t image_name:tag .
+  - kubectl apply -f k8s.yaml
