@@ -1,13 +1,16 @@
-FROM node:18.13.0-alpine
+FROM node:latest as build
 
-WORKDIR '/app'
+WORKDIR /usr/local/app
 
-COPY package.json .
+COPY ./ /usr/local/app/
 
 RUN npm install
 
-COPY . .
+RUN npm run build
 
-EXPOSE 4200
+FROM nginx:latest
 
-CMD ["npm", "start"]
+COPY --from=build /usr/local/app/dist/client/browser /usr/share/nginx/html
+
+#is it possible to change that?
+EXPOSE 80
