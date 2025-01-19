@@ -30,9 +30,10 @@ Personal project about history. The main objective is to learn tools and apply s
   - Not working ng serve plain, i had to add --ssl
 
 ### Dockerize
-- Create Dockerfile (with the same notes as the microservice section)
+- Create Dockerfile 
+  - Expose port can be changed?
 - Create the Docker image with: docker build -t image_name:tag . (same as microservice)
-- Create container with: docker run -d -p 4200:4200 image_name
+- Create container with: docker run -d -p 80:80 image_name
 
 ## Environment 
 Now the objective is to have communication between client and microservices.
@@ -42,7 +43,8 @@ To do that I will use a Kubernetes cluster (Minikube).
 - minikube start
   - Useful to watch the cluster: minikube dashboard
 - launch eval $(minikube docker-env) in every new bash
-- build the docker images you need
+- build the docker images you need (this images will be loaded inside minikube, so you
+won't have it locally)
 - kubectl apply -f k8s.yaml (this is the file for the deployment, it will take
 the previously builded image)
 
@@ -54,3 +56,11 @@ the previously builded image)
 - rebuild and re-deploy with
   - docker build -t image_name:tag .
   - kubectl apply -f k8s.yaml
+
+### Expose a service
+- You need to have a deployment
+- kubectl expose deployment deployment_name --type=NodePort --port=...
+  - This step is not necessary, i've taken the yaml of the service created and 
+  i putted it inside k8s.yaml. So the next time i run apply it will automatically be created
+- minikube service service_name --url
+  - This will mantain the tunnel for the localhost, the terminal must stay open
