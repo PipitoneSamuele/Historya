@@ -60,3 +60,26 @@ spec:
   selector:
     app: client
   type: NodePort
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: facts
+  name: facts-service
+spec:
+  clusterIP: 10.101.157.19
+  clusterIPs:
+    - 10.101.157.19
+  externalTrafficPolicy: Cluster
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+    - IPv4
+  ports:
+    - nodePort: 30456
+      port: 82
+      protocol: TCP
+      targetPort: 82
+  selector:
+    app: facts
+  type: NodePort
