@@ -61,7 +61,7 @@ the previously builded image)
 ### Expose a service
 - You need to have a deployment
 - kubectl expose deployment deployment_name --type=NodePort --port=...
-  - This step is not necessary, i've taken the yaml of the service created and 
+  - This step is not necessary, i've taken the yaml (with kubectl get deploy deployment_name -o yaml) of the service created and 
   i putted it inside k8s.yaml. So the next time i run apply it will automatically be created
 - minikube service service_name --url
   - This will mantain the tunnel for the localhost, the terminal must stay open
