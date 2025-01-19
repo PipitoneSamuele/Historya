@@ -20,6 +20,7 @@ Personal project about history. The main objective is to learn tools and apply s
   - Note: you can't create a folder, you have to put it at root level
 - Create the Docker image with: docker build -t image_name .
   - This is the blueprint for creating a container
+  - You can use the flag --no-cache to "force" a clean build
 - Create container with: docker run -d -p 8080:8080 image_name
 
 ## Client
